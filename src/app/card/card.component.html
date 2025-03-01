@@ -1,0 +1,39 @@
+@if (type === 'dark') {
+<div
+  class="categorie-card align-self-center dark"
+  [ngClass]="{ hovered: isHovered }"
+  (mouseenter)="isHovered = true"
+  (mouseleave)="isHovered = false"
+  (click)="getNexQuestions()"
+>
+  <img
+    [src]="icon"
+    [ngClass]="{ 'icon-hover': isHovered }"
+    [alt]="title"
+    class="dark"
+  />
+  <p class="cardtitle dark" [ngClass]="{ 'title-hover': isHovered }">
+    {{ title }}
+  </p>
+</div>
+} @else {
+
+<div
+  class="categorie-card white col d-flex"
+  [ngClass]="{ hovered: isHovered }"
+  (mouseenter)="isHovered = true"
+  (mouseleave)="isHovered = false"
+  (click)="getNexQuestions()"
+>
+  <p
+    class="cardtitle white d-flex"
+    [ngClass]="{ 'title-white-hover': isHovered }"
+  >
+    {{ title }}
+  </p>
+  <div class="ms-auto">
+    <img src="icons/next.png" class="next-icon" />
+  </div>
+</div>
+
+}

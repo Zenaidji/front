@@ -1,0 +1,119 @@
+.categorie-card.dark {
+  width: 150px;
+  height: 150px;
+  background-color: #ffe5e5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+
+  border-radius: 10px;
+  gap: 10px;
+  padding-top: 15px;
+  padding-right: 17px;
+  padding-bottom: 15px;
+  padding-left: 17px;
+}
+
+:host {
+  display: contents;
+}
+
+.categorie-card img.dark {
+  width: 100px;
+  height: 100px;
+  transition: filter 0.3s ease-in-out;
+}
+
+.categorie-card.hovered.dark {
+  background-color: #ff4d6d;
+}
+
+.categorie-card .icon-hover.dark {
+  filter: brightness(0) invert(1);
+}
+.categorie-card .dark.cardtitle.title-hover {
+  background-color: #ffffff;
+  color: #ff4d6d;
+}
+
+.categorie-card .dark.cardtitle {
+  color: #ffffff;
+  background-color: #ff4d6d;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  padding: 2px;
+}
+
+/* .categorie-card.white {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: #f2f2f2;
+
+  border-radius: 10px;
+  padding-top: 13px;
+  padding-right: 16px;
+  padding-bottom: 13px;
+  padding-left: 16px;
+}
+
+ .cardtitle.light {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #443d3c;
+} 
+
+ .categorie-card.light:hover.title-light {
+  color: #f07388;
+} 
+
+.next-icon {
+  width: 24px;
+  height: 24px;
+}
+
+ .categorie-card.light:hover {
+  color: #f07388;
+  background-color: #fceef0;
+}  */
+
+.categorie-card.white {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  padding: 13px 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.cardtitle.white {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #443d3c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.categorie-card.white:hover {
+  background-color: #fceef0;
+  color: #f07388;
+}
+
+.title-white-hover {
+  color: #f07388 !important;
+}
+
+.next-icon {
+  width: 24px;
+  height: 24px;
+}

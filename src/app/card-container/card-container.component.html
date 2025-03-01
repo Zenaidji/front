@@ -1,0 +1,113 @@
+<div class="container-fluid" [ngClass]="theme ? 'darkTheme' : 'lightTheme'">
+  <div class="d-flex flex-column align-items-center min-vh-100">
+    <h1 class="category-title" [ngClass]="theme ? 'darkTheme' : 'lightTheme'">
+      {{ title }}:
+    </h1>
+    @if(theme){
+    <img
+      class="moustache"
+      alt=""
+      src="icons/moustache.png"
+      [ngClass]="theme ? 'darkTheme' : 'lightTheme'"
+    />
+
+    }@else{
+    <img
+      class="moustache"
+      alt=""
+      src="icons/moustacheRose.png"
+      [ngClass]="theme ? 'darkTheme' : 'lightTheme'"
+    />
+    }
+
+    <!-- Si le thème est dark -->
+    @if (theme) {
+    <div class="text-white p-3 rounded categories-container text-center">
+      <div class="container darkContainer mt-4">
+        @for (i of getRowIndices(); track i) {
+        <div class="row justify-content-center g-1 mt-3">
+          @for (card of cards.slice(i, i + 3); track card.title) {
+          <div class="col-md-4 d-flex justify-content-center px-1">
+            <app-card
+              [icon]="card.icon"
+              [title]="card.title"
+              [type]="card.type"
+              [url]="card.url"
+            ></app-card>
+          </div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+    } @if (!theme) {
+    <div class="container lightContainer p-1 text-dark rounded">
+      <div class="container-fluid p-3 mt-2">
+        @for (card of cards; track card.title) { @if ($index % 2 === 0) {
+        <div
+          class="white row g-0 d-flex justify-content-between p-1 mb-2 mx-auto"
+        >
+          <app-card
+            [icon]="cards[$index].icon"
+            [title]="cards[$index].title"
+            [type]="'light'"
+            [url]="cards[$index].url"
+          ></app-card>
+          @if($index + 1 < $count) {
+
+          <app-card
+            [icon]="cards[$index + 1].icon"
+            [title]="cards[$index + 1].title"
+            [type]="'light'"
+            [url]="cards[$index + 1].url"
+          ></app-card>
+          }
+        </div>
+        } }
+
+        <button class="backBtn" type="button">
+          Etape précédente <img src="icons/back.png" class="backImg" />
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="alert alert-success mt-2 mb-3 d-flex justify-content-center"
+      role="alert"
+    >
+      <ul class="list-unstyled">
+        <li class="">
+          <img
+            src="icons/check.png"
+            alt="Professionnels qualifiés"
+            class="me-2"
+            style="width: 24px; height: 24px"
+          />
+          Plus de <strong>1500 professionnels qualifiés</strong>, recrutés selon
+          des critères et un processus stricts
+        </li>
+        <li class="">
+          <img
+            src="icons/check.png"
+            alt="Fourchette tarifaire"
+            class="me-2"
+            style="width: 24px; height: 24px"
+          />
+          Fourchette tarifaire <strong>connue à l’avance</strong>, incluant le
+          déplacement ainsi qu’un devis gratuit
+        </li>
+        <li class="">
+          <img
+            src="icons/check.png"
+            alt="Intervention 24/7"
+            class="me-2"
+            style="width: 24px; height: 24px"
+          />
+          Intervention <strong>7j/7 24h/24 </strong> pour les dépannages
+          d’urgence
+        </li>
+      </ul>
+    </div>
+    }
+  </div>
+</div>

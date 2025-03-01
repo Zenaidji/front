@@ -1,0 +1,90 @@
+:host {
+  display: contents;
+}
+.darkTheme {
+  background-color: #443d3c;
+}
+.lightTheme {
+  background-color: #f8f8f8;
+}
+
+.category-title.darkTheme {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 81px;
+  letter-spacing: 0%;
+  margin-bottom: 5rem;
+  color: white;
+}
+.moustache {
+  margin-bottom: 2rem;
+  width: 79.9993896484375;
+  height: 16.667072296142578;
+}
+
+.category-title.lightTheme {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 81px;
+  letter-spacing: 0%;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  color: black;
+}
+
+/* @media (max-width: 768px) {
+  .category-title {
+    font-size: 40px;
+    line-height: 60px;
+  }
+} */
+
+.lightContainer {
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: white;
+  justify-content: center;
+  border: 1px solid #f2f2f2;
+}
+
+.white.row {
+  gap: 15px;
+
+  width: 90%;
+}
+.alert {
+  width: 79%;
+  background-color: #defae9;
+}
+.backImg {
+  width: 4.495000362396257;
+  height: 7.497499942779569;
+  top: 15.75px;
+  left: 12.25px;
+  rotate: 180 deg;
+}
+.backBtn {
+  background: #ffffff;
+  display: flex;
+  height: 56.000003814697266px;
+  border-radius: 43px;
+  gap: 8px;
+  border-width: 1px;
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+  margin-left: 4rem;
+  border: 1px solid #ff445f;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: #ff445f;
+}
+.backBtn:hover {
+  background-color: #fae9eb;
+}
