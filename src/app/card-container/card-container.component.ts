@@ -17,11 +17,14 @@ export class CardContainerComponent implements OnInit {
   title = 'Mon problème concerne';
   fstQuestionId!: string;
   theme!: boolean;
+  previousQuestionId!: string;
   constructor(private cardService: CardService) {
     this.cardService.getQuestionsByLevel('one').subscribe({
       next: (questions: Question[]) => {
         if (questions.length > 0) {
+          this.previousQuestionId = questions[0]._id;
           console.log('Questions :', questions);
+          console.log('id constructeur :', this.previousQuestionId);
           this.cards = this.mapQuestionsToCards(questions);
         }
       },
@@ -35,8 +38,8 @@ export class CardContainerComponent implements OnInit {
   }
 
   initCards(parentId: string): void {
-    console.log('QuestparentIdions :', parentId);
     if (parentId != '' && parentId != null && parentId != undefined) {
+      this.previousQuestionId = parentId;
       this.cardService.getQuestionById(parentId).subscribe({
         next: (question: Question) => {
           if (question.level != 'last') {
@@ -73,21 +76,30 @@ export class CardContainerComponent implements OnInit {
     }));
   }
 
-  // getPreviousQuestion(): void {
-  //   this.cardService.getQuestionById(this.previousQuestionId).subscribe({
-  //     next: (question) => {
-  //       this.title = question.label;
-  //       this.previousQuestionId = question.parentID;
-  //     },
-  //     error: (err) => console.error('Erreur :', err),
-  //     complete: () => {
-  //       if (this.previousQuestionId) {
-  //         this.initCards(this.previousQuestionId);
-  //       } else {
-  //       }
-  //     },
-  //   });
-  // }
+  getPreviousQuestion(): void {
+    this.cardService.getQuestionById(this.previousQuestionId).subscribe({
+      next: (question: Question) => {
+        console.log('Previous question :');
+        if (question.level === 'one') {
+          this.cardService.getQuestionsByLevel('one').subscribe({
+            next: (questions: Question[]) => {
+              if (questions.length > 0) {
+                this.cards = this.mapQuestionsToCards(questions);
+                this.theme = true;
+                this.title = 'Mon problème concerne';
+              }
+            },
+          });
+        } else {
+          console.log('Else condition');
+          console.log(question);
+          console.log(question.hasOwnProperty('parent'));
+          this.initCards(question.parent);
+        }
+      },
+      error: (err) => console.error('Erreur :', err),
+    });
+  }
 
   //this.cardService.updateCurrentQuestion(questions[0]._id, true);
 }

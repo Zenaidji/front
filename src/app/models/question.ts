@@ -1,6 +1,6 @@
 export interface Question {
   _id: string;
-  parentID: string;
+  parent: string;
   type: string;
   text: string;
   icon: string;

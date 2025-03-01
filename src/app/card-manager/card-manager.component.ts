@@ -9,17 +9,17 @@ import { CardContainerComponent } from '../card-container/card-container.compone
   templateUrl: './card-manager.component.html',
   styleUrl: './card-manager.component.css',
 })
-export class CardManagerComponent implements OnInit {
+export class CardManagerComponent {
   constructor(private cardService: CardService) {}
 
-  ngOnInit(): void {
-    this.cardService.getQuestionsByParentId('').subscribe({
-      next: (questions) => {
-        if (questions.length > 0) {
-          this.cardService.updateCurrentQuestion(questions[0]._id, false);
-        }
-      },
-      error: (err) => console.error('Erreur :', err),
-    });
-  }
+  // ngOnInit(): void {
+  //   this.cardService.getQuestionsByParentId('').subscribe({
+  //     next: (questions) => {
+  //       if (questions.length > 0) {
+  //         this.cardService.updateCurrentQuestion(questions[0]._id, false);
+  //       }
+  //     },
+  //     error: (err) => console.error('Erreur :', err),
+  //   });
+  // }
 }
