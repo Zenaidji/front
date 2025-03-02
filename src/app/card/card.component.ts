@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardService } from '../services/card.service';
+import { Reponse } from '../models/reponse';
+import { ReponseService } from '../services/reponse.service';
 
 @Component({
   standalone: true,
@@ -16,7 +18,10 @@ export class CardComponent {
   @Input() url!: string;
   @Input() level!: string;
   isHovered = false;
-  constructor(private cardService: CardService) {}
+  constructor(
+    private cardService: CardService,
+    private reponseService: ReponseService
+  ) {}
 
   getNexQuestions(): void {
     if (
@@ -33,6 +38,12 @@ export class CardComponent {
       } else {
         this.cardService.updateBonaAsavoir(true);
       }
+      const reponse: Reponse = {
+        question_text: this.reponseService.questionText,
+        response: this.title,
+      };
+      this.reponseService.addReponse(reponse);
+      console.log('next =>', this.reponseService.reponses);
     }
   }
 }

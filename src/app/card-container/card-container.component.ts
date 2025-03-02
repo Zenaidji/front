@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { Card } from '../models/card';
 import { Question } from '../models/question';
+import { ReponseService } from '../services/reponse.service';
 
 @Component({
   selector: 'app-card-container',
@@ -18,13 +19,15 @@ export class CardContainerComponent implements OnInit {
   fstQuestionId!: string;
   theme!: boolean;
   previousQuestionId!: string;
-  constructor(private cardService: CardService) {
+  constructor(
+    private cardService: CardService,
+    private reponseService: ReponseService
+  ) {
     this.cardService.getQuestionsByLevel('one').subscribe({
       next: (questions: Question[]) => {
         if (questions.length > 0) {
           this.previousQuestionId = questions[0]._id;
-          console.log('Questions :', questions);
-          console.log('id constructeur :', this.previousQuestionId);
+          this.reponseService.questionText = this.title;
           this.cards = this.mapQuestionsToCards(questions);
         }
       },
@@ -44,6 +47,7 @@ export class CardContainerComponent implements OnInit {
         next: (question: Question) => {
           if (question.level != 'last') {
             this.title = question.label;
+            this.reponseService.questionText = this.title;
           }
         },
       });
@@ -80,7 +84,6 @@ export class CardContainerComponent implements OnInit {
   getPreviousQuestion(): void {
     this.cardService.getQuestionById(this.previousQuestionId).subscribe({
       next: (question: Question) => {
-        console.log('Previous question :');
         if (question.level === 'one') {
           this.cardService.getQuestionsByLevel('one').subscribe({
             next: (questions: Question[]) => {
@@ -88,14 +91,15 @@ export class CardContainerComponent implements OnInit {
                 this.cards = this.mapQuestionsToCards(questions);
                 this.theme = true;
                 this.title = 'Mon problème concerne';
+                this.reponseService.popResponse();
               }
             },
           });
         } else {
-          console.log('Else condition');
-          console.log(question);
           this.initCards(question.parent);
+          this.reponseService.popResponse();
         }
+        console.log('goback <=', this.reponseService.reponses);
       },
       error: (err) => console.error('Erreur :', err),
     });
