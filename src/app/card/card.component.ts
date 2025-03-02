@@ -14,6 +14,7 @@ export class CardComponent {
   @Input() title!: string;
   @Input() type!: string;
   @Input() url!: string;
+  @Input() level!: string;
   isHovered = false;
   constructor(private cardService: CardService) {}
 
@@ -27,7 +28,11 @@ export class CardComponent {
         'Electromenager',
       ].includes(this.title)
     ) {
-      this.cardService.updateCurrentQuestion(this.url, false);
+      if (this.level != 'last') {
+        this.cardService.updateCurrentQuestion(this.url, false);
+      } else {
+        this.cardService.updateBonaAsavoir(true);
+      }
     }
   }
 }

@@ -11,9 +11,11 @@ export class CardService {
 
   private currentQuestionId = new BehaviorSubject<string>('');
   private curentTheme = new BehaviorSubject<boolean>(true);
+  private bonaAsavoir = new BehaviorSubject<boolean>(false);
   currentQuestionId$: Observable<string> =
     this.currentQuestionId.asObservable();
   curentTheme$: Observable<boolean> = this.curentTheme.asObservable();
+  bonaAsavoir$: Observable<boolean> = this.bonaAsavoir.asObservable();
 
   getQuestionsByParentId(parent: string): Observable<Question[]> {
     return this.http.get<Question[]>(
@@ -32,5 +34,9 @@ export class CardService {
   updateCurrentQuestion(id: string, theme: boolean): void {
     this.currentQuestionId.next(id);
     this.curentTheme.next(theme);
+  }
+
+  updateBonaAsavoir(bonaAsavoir: boolean): void {
+    this.bonaAsavoir.next(bonaAsavoir);
   }
 }

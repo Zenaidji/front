@@ -1,7 +1,7 @@
 <div class="container-fluid" [ngClass]="theme ? 'darkTheme' : 'lightTheme'">
   <div class="d-flex flex-column align-items-center min-vh-100">
     <h1 class="category-title" [ngClass]="theme ? 'darkTheme' : 'lightTheme'">
-      {{ title }}:
+      {{ title }}
     </h1>
     @if(theme){
     <img
@@ -52,6 +52,7 @@
             [title]="cards[$index].title"
             [type]="'light'"
             [url]="cards[$index].url"
+            [level]="cards[$index].level"
           ></app-card>
           @if($index + 1 < $count) {
 
@@ -60,6 +61,7 @@
             [title]="cards[$index + 1].title"
             [type]="'light'"
             [url]="cards[$index + 1].url"
+            [level]="cards[$index].level"
           ></app-card>
           }
         </div>
@@ -71,43 +73,50 @@
       </div>
     </div>
 
-    <div
-      class="alert alert-success mt-2 mb-3 d-flex justify-content-center"
-      role="alert"
-    >
-      <ul class="list-unstyled">
-        <li class="">
-          <img
-            src="icons/check.png"
-            alt="Professionnels qualifiés"
-            class="me-2"
-            style="width: 24px; height: 24px"
-          />
-          Plus de <strong>1500 professionnels qualifiés</strong>, recrutés selon
-          des critères et un processus stricts
-        </li>
-        <li class="">
-          <img
-            src="icons/check.png"
-            alt="Fourchette tarifaire"
-            class="me-2"
-            style="width: 24px; height: 24px"
-          />
-          Fourchette tarifaire <strong>connue à l’avance</strong>, incluant le
-          déplacement ainsi qu’un devis gratuit
-        </li>
-        <li class="">
-          <img
-            src="icons/check.png"
-            alt="Intervention 24/7"
-            class="me-2"
-            style="width: 24px; height: 24px"
-          />
-          Intervention <strong>7j/7 24h/24 </strong> pour les dépannages
-          d’urgence
-        </li>
-      </ul>
+    <div class="container mt-3">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div
+            class="alert alert-success d-flex justify-content-center"
+            role="alert"
+          >
+            <ul class="list-unstyled">
+              <li>
+                <img
+                  src="icons/check.png"
+                  alt="Professionnels qualifiés"
+                  class="me-2"
+                  style="width: 24px; height: 24px"
+                />
+                Plus de <strong>1500 professionnels qualifiés</strong>, recrutés
+                selon des critères stricts.
+              </li>
+              <li>
+                <img
+                  src="icons/check.png"
+                  alt="Fourchette tarifaire"
+                  class="me-2"
+                  style="width: 24px; height: 24px"
+                />
+                Fourchette tarifaire <strong>connue à l’avance</strong>,
+                incluant le déplacement ainsi qu’un devis gratuit.
+              </li>
+              <li>
+                <img
+                  src="icons/check.png"
+                  alt="Intervention 24/7"
+                  class="me-2"
+                  style="width: 24px; height: 24px"
+                />
+                Intervention <strong>7j/7 24h/24</strong> pour les dépannages
+                d’urgence.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+
     }
   </div>
 </div>

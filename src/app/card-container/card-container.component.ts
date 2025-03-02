@@ -73,6 +73,7 @@ export class CardContainerComponent implements OnInit {
       title: q.text,
       type: q.level === 'one' ? 'dark' : 'light',
       url: q._id,
+      level: q.level,
     }));
   }
 
@@ -93,7 +94,6 @@ export class CardContainerComponent implements OnInit {
         } else {
           console.log('Else condition');
           console.log(question);
-          console.log(question.hasOwnProperty('parent'));
           this.initCards(question.parent);
         }
       },

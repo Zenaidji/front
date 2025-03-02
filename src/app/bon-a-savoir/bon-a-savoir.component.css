@@ -1,0 +1,71 @@
+:host {
+  display: contents;
+}
+
+.imgBonAsavoir {
+  max-width: 45rem;
+  max-height: 33rem;
+  min-width: 15rem;
+  gap: 10px;
+  border-radius: 10px;
+}
+.main .card-text {
+  font-family: "Poppins", sans-serif; /* Ajout de sans-serif pour éviter le fallback */
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5; /* Utilisation d'une valeur relative pour une meilleure adaptabilité */
+  letter-spacing: normal; /* Remplace "0%" par "normal" car 0% est inutile */
+  color: #443d3c;
+}
+
+.card-title.r1 {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32.4px;
+  letter-spacing: -1%;
+  color: #ff445f;
+}
+.pinkcheck {
+  width: 16px;
+  height: 16px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.interventionBtn {
+  width: 245;
+  height: 53;
+  gap: 8px;
+  border-radius: 43px;
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+  border-width: 1px;
+  background-color: #ff445f;
+  border: 1px solid #ff445f;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: white;
+}
+
+.interventionBtn:hover {
+  background-color: #8f0c30;
+}
+
+.card-two {
+  background-color: #fff0f1;
+}
+.crd-ctn {
+  box-shadow: 4px 7px 18px 7px #0000000d;
+}
+.int {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0%;
+}
