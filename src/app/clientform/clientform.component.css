@@ -1,0 +1,22 @@
+.numbers {
+  width: 24px;
+  height: 24px;
+}
+.order {
+  height: 53;
+  gap: 8px;
+  border-radius: 43px;
+  padding-top: 16px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  padding-left: 24px;
+  border-width: 1px;
+  background-color: #ff445f;
+  border: 1px solid #ff445f;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0%;
+  color: white;
+}

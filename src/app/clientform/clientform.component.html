@@ -1,0 +1,256 @@
+@if(formulaire){
+<div class="container mt-4">
+  <div class="row">
+    <div class="card shadow p-4 col-md-7">
+      <h4 class="mb-3">
+        <img src="icons/one.png" class="numbers" /> Informations
+      </h4>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="mb-2 col-md-6">
+            <label class="form-label">Prénom*</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('prenom')?.invalid && form.get('prenom')?.touched
+              "
+              formControlName="prenom"
+            />
+            <div class="invalid-feedback">Champ obligatoire</div>
+          </div>
+
+          <!-- Nom -->
+          <div class="mb-2 col-md-6">
+            <label class="form-label">Nom*</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('nom')?.invalid && form.get('nom')?.touched
+              "
+              formControlName="nom"
+            />
+            <div class="invalid-feedback">Champ obligatoire</div>
+          </div>
+        </div>
+        <!-- Adresse -->
+
+        <div class="row">
+          <div class="mb-2 col-md-6">
+            <label class="form-label">Adresse (numéro et voie)*</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('adresse')?.invalid && form.get('adresse')?.touched
+              "
+              formControlName="adresse"
+            />
+            <div class="invalid-feedback">Champ obligatoire</div>
+          </div>
+
+          <!-- Code postal -->
+          <div class="mb-2 col-md-6">
+            <label class="form-label">Code postal*</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('codePostal')?.invalid &&
+                form.get('codePostal')?.touched
+              "
+              formControlName="codePostal"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('codePostal')?.hasError('required')"
+                >Champ obligatoire</span
+              >
+              <span *ngIf="form.get('codePostal')?.hasError('pattern')"
+                >Code postal invalide (5 chiffres)</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Téléphone -->
+        <div class="row">
+          <div class="mb-2 col-md-6">
+            <label class="form-label">Téléphone*</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('telephone')?.invalid && form.get('telephone')?.touched
+              "
+              formControlName="telephone"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('telephone')?.hasError('required')"
+                >Champ obligatoire</span
+              >
+              <span *ngIf="form.get('telephone')?.hasError('pattern')"
+                >Format invalide (06XXXXXXXX ou 07XXXXXXXX)</span
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-2 col-md-6">
+            <label class="form-label">Email*</label>
+            <input
+              type="email"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('email')?.invalid && form.get('email')?.touched
+              "
+              formControlName="email"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('email')?.hasError('required')"
+                >Champ obligatoire</span
+              >
+              <span *ngIf="form.get('email')?.hasError('email')"
+                >Email invalide</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Mode de paiement -->
+        <h4
+          class="mt-4"
+          style="
+            width: 214;
+            height: 44;
+            gap: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+          "
+        >
+          <img src="icons/deux.png" class="numbers" /> Modes de paiement
+        </h4>
+
+        <div class="form-check bg-light pt-2 pb-2 mb-2 rounded">
+          <input
+            id="payerSurPlace"
+            type="radio"
+            class="form-check-input ms-1 me-2"
+            value="onSite"
+            formControlName="modePaiement"
+          />
+          <label for="payerSurPlace" class="form-check-label"
+            >Payer sur place</label
+          >
+        </div>
+
+        <div class="form-check bg-light pt-2 pb-2 mb-2 rounded">
+          <input
+            id="enLigne"
+            type="radio"
+            class="form-check-input ms-1 me-2"
+            value="online"
+            formControlName="modePaiement"
+          />
+          <label for="enLigne" class="form-check-label">Payer en ligne</label>
+        </div>
+
+        <div
+          *ngIf="
+            form.get('modePaiement')?.invalid &&
+            form.get('modePaiement')?.touched
+          "
+          class="text-danger"
+        >
+          Veuillez sélectionner un mode de paiement.
+        </div>
+
+        <!-- Conditions -->
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [formControl]="getConditionControl(0)"
+          />
+          <label class="form-check-label">
+            J'accepte les <a href="#">conditions générales d'utilisation</a>
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [formControl]="getConditionControl(1)"
+          />
+          <label class="form-check-label">
+            J'ai pris connaissance des
+            <a href="#">dispositions relatives au droit de rétractation</a>
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [formControl]="getConditionControl(2)"
+          />
+          <label class="form-check-label">
+            Je souhaite recevoir des offres commerciales personnalisées
+          </label>
+        </div>
+
+        <div *ngIf="conditions.invalid" class="text-danger mt-2">
+          Vous devez accepter les conditions obligatoires.
+        </div>
+
+        <!-- Boutons -->
+        <div class="d-flex justify-content-between mt-4">
+          <button type="button" class="btn btn-secondary">
+            Étape précédente
+          </button>
+          <button type="submit" class="order" [disabled]="form.invalid">
+            Passer commande et payer en ligne
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+}@if(success){
+
+<!-- HTML -->
+<div
+  class="container p-5 d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div
+    class="alert alert-success d-flex align-items-center justify-content-center"
+    role="alert"
+  >
+    <div class="text-center">
+      <h2>
+        Vos réponses sont envoyées avec succès
+        <img src="icons/check.png" class="me-2" alt="Success Icon" />
+      </h2>
+    </div>
+  </div>
+</div>
+
+}@if(error){
+
+<div
+  class="container p-5 d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div
+    class="alert alert-danger d-flex align-items-center justify-content-center"
+    role="alert"
+  >
+    <div class="text-center">
+      <h2>un problème est survenu. Veuillez réessayer ultérieurement</h2>
+    </div>
+  </div>
+</div>
+
+}

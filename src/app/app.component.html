@@ -1,6 +1,8 @@
 @if(bonaAsavoir){
 <app-bon-a-savoir></app-bon-a-savoir>
-} @else{
+}@if(formClient){
+<app-client-form></app-client-form>
+}@if(cardManager){
 <app-card-manager></app-card-manager>
 }
 

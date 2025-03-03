@@ -37,6 +37,8 @@ export class CardComponent {
         this.cardService.updateCurrentQuestion(this.url, false);
       } else {
         this.cardService.updateBonaAsavoir(true);
+        this.cardService.updateCardManager(false);
+        localStorage.setItem('responses', JSON.stringify(this.reponseService));
       }
       const reponse: Reponse = {
         question_text: this.reponseService.questionText,
