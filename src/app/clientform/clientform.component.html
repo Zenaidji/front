@@ -220,7 +220,7 @@
 }@if(success){
 
 <!-- HTML -->
-<div
+<!-- <div
   class="container p-5 d-flex justify-content-center align-items-center"
   style="height: 100vh"
 >
@@ -233,9 +233,14 @@
         Vos réponses sont envoyées avec succès
         <img src="icons/check.png" class="me-2" alt="Success Icon" />
       </h2>
+      <button class="btn btn-succes" (click)="initClients()">
+        affihcer les clients
+      </button>
     </div>
   </div>
-</div>
+</div> -->
+
+<app-client-list></app-client-list>
 
 }@if(error){
 

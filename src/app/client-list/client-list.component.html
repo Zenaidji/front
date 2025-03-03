@@ -1,0 +1,32 @@
+<h2>Liste des Clients</h2>
+
+<table id="clientTable" class="display table table-striped">
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Téléphone</th>
+      <th>Email</th>
+      <th>Mode de Paiement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.firstName }}</td>
+      <td>{{ client.lastName }}</td>
+      <td>{{ client.address }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.paymentMethod }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Importation de jQuery et DataTables -->
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
+/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

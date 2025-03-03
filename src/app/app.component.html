@@ -1,9 +1,11 @@
 @if(bonaAsavoir){
 <app-bon-a-savoir></app-bon-a-savoir>
+
 }@if(formClient){
 <app-client-form></app-client-form>
 }@if(cardManager){
 <app-card-manager></app-card-manager>
+<a routerLink="/clients" class="btn btn-primary">Voir les Clients</a>
 }
 
 <app-footer></app-footer>
